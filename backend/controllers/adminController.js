@@ -2,6 +2,7 @@ import validator from 'validator'
 import bcrypt from 'bcrypt'
 import { v2 as cloudinary } from 'cloudinary'
 import doctorModel from '../models/doctorModel.js'
+// import upload from '../middlewares/multer.js'
 // API for adding doctor
 
 const addDoctor = async (req, res) => {
