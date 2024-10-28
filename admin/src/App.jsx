@@ -1,11 +1,13 @@
 import React from 'react'
-import Login from './pages/Login.jsx'
+import Login from './pages/login'
+
+
 const App = () => {
-    return (
-        <div>
-            <Login />
-        </div>
-    )
+  return (
+    <div>
+      <Login />
+    </div>
+  )
 }
 
 export default App
