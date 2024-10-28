@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { assets } from '../assets/assets'
-import { AdminContext } from '../context/AdminContext.jsx'
+import { AdminContext } from '../context/AdminContext'
 
 const Login = () => {
     const [state, setState] = useState('Admin')
