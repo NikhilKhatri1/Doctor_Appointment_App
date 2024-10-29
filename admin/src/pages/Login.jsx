@@ -21,6 +21,7 @@ const Login = () => {
                 const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password })
                 if (data.success) {
                     console.log(data.token);
+                   
                 }
 
             } else {
