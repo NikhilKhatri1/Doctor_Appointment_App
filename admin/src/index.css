@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Pacifico&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,4 +7,8 @@
 
 ::-webkit-scrollbar {
     @apply hidden
+}
+
+* {
+    font-family: Outfit;
 }
