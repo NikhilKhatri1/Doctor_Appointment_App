@@ -19,8 +19,7 @@ const MyAppointment = () => {
       const { data } = await axios.get(backendUrl + '/api/user/appointments', { headers: { token } })
       if (data.success) {
         setAppointments(data.appointments.reverse())
-        console.log(data.appointments);
-
+        // console.log(data.appointments);
       }
     } catch (error) {
       console.log(error);
@@ -48,6 +47,25 @@ const MyAppointment = () => {
     }
   }
 
+  // Razorpay payment
+
+  const appointmentRazorpay = async (appointmentId) => {
+    try {
+
+      const { data } = await axios.post(backendUrl + '/api/user/payment-razorpay', { appointmentId }, { headers: { token } })
+      if (data.success) {
+        console.log(data.order);
+      }
+
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message)
+    }
+
+
+  }
+
+
   useEffect(() => {
     if (token) {
       getUserAppointments()
@@ -72,7 +90,7 @@ const MyAppointment = () => {
             </div>
             <div></div>
             <div className='flex flex-col justify-end gap-2'>
-              {!item.cancelled && <button className='py-2 text-sm text-center transition-all duration-300 border rounded text-stone-500 sm:min-w-48 hover:bg-primary hover:text-white'>Pay Online</button>}
+              {!item.cancelled && <button onClick={() => appointmentRazorpay(item._id)} className='py-2 text-sm text-center transition-all duration-300 border rounded text-stone-500 sm:min-w-48 hover:bg-primary hover:text-white'>Pay Online</button>}
               {!item.cancelled && <button onClick={() => cancelAppointment(item._id)} className='py-2 text-sm text-center transition-all duration-300 border rounded text-stone-500 sm:min-w-48 hover:bg-red-600 hover:text-white'>Cancel Appointment</button>}
               {item.cancelled && <button className='py-2 text-red-500 border border-red-500 rounded sm:min-w-48'>Appointment Cancelled</button>}
             </div>
