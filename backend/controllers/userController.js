@@ -225,13 +225,16 @@ const razorpayInstance = new razorpay({
     key_secret: process.env.RAZORPAY_KEY_SECRET
 
 })
+// console.log(razorpayInstance)
+// console.log(process.env.CURRENCY)
+// console.log("Razorpay Key ID:", process.env.RAZORPAY_KEY_ID);
+// console.log("Razorpay Key Secret:", process.env.RAZORPAY_KEY_SECRET);
+
 
 // API to make payment of appointment using razorpay
 
 const paymentRazorpay = async (req, res) => {
-
     try {
-
         const { appointmentId } = req.body
         const appointmentData = await appointmentModel.findById(appointmentId)
         // if appointment is cancelled you dont have to pay

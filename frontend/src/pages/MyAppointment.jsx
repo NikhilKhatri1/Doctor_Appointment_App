@@ -51,7 +51,6 @@ const MyAppointment = () => {
 
   const appointmentRazorpay = async (appointmentId) => {
     try {
-
       const { data } = await axios.post(backendUrl + '/api/user/payment-razorpay', { appointmentId }, { headers: { token } })
       if (data.success) {
         console.log(data.order);
@@ -61,10 +60,7 @@ const MyAppointment = () => {
       console.log(error);
       toast.error(error.message)
     }
-
-
   }
-
 
   useEffect(() => {
     if (token) {
