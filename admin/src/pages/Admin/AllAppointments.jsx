@@ -9,7 +9,7 @@ const AllAppointments = () => {
 
   const { aToken, appointments, getAllAppointments, cancelAppointment } = useContext(AdminContext)
   const { calculateAge, slotDateFormat, currency } = useContext(AppContext)
-
+  
 
   useEffect(() => {
     if (aToken) {
@@ -44,9 +44,10 @@ const AllAppointments = () => {
                 <img className='w-8 bg-gray-200 rounded-full' src={item.docData.image} alt="" /> <p>{item.docData.name}</p>
               </div>
               <p>{currency}{item.amount}</p>
-              {item.cancelled
-                ? <p className='text-xs font-medium text-red-400'>Cancelled</p>
-                : <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
+              {
+                item.cancelled
+                  ? <p className='text-xs font-medium text-red-400'>Cancelled</p>
+                  : <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
               }
 
             </div>

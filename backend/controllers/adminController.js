@@ -4,6 +4,7 @@ import { v2 as cloudinary } from 'cloudinary'
 import doctorModel from '../models/doctorModel.js'
 import jwt from 'jsonwebtoken'
 import appointmentModel from '../models/appointmentModel.js'
+import userModel from '../models/userModel.js'
 // import upload from '../middlewares/multer.js'
 // API for adding doctor
 
@@ -136,4 +137,29 @@ const appointmentCancel = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
-export { addDoctor, loginAdmin, allDoctors, appointmentAdmin, appointmentCancel }
+// API to get dashboard data in admin panel
+
+const adminDashboard = async (req, res) => {
+    try {
+        // total number of appointment details
+        const doctors = await doctorModel.find({})
+        const users = await userModel.find({})
+        const appointments = await appointmentModel.find({})
+        // need no. doctors,users,appointments and latest appointments
+        const dashData = {
+            doctors: doctors.length,
+            appointments: appointments.length,
+            patients: users.length,
+            latestAppointments: appointments.reverse().slice(0, 5)
+        }
+        res.json({ success: true, dashData })
+
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
+
+
+
+export { addDoctor, loginAdmin, allDoctors, appointmentAdmin, appointmentCancel, adminDashboard }
