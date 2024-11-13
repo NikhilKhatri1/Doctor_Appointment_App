@@ -11,13 +11,13 @@ const MyAppointment = () => {
   const [appointments, setAppointments] = useState([])
   const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
- 
+
 
   const slotDateFormat = (slotDate) => {
     const dateArray = slotDate.split('/')
     return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2]
   }
-  
+
   const navigate = useNavigate();
 
   const getUserAppointments = async () => {
@@ -126,10 +126,11 @@ const MyAppointment = () => {
             </div>
             <div></div>
             <div className='flex flex-col justify-end gap-2'>
-              {!item.cancelled && item.payment && <button className='py-2 bg-indigo-500 border rounded text-stone-500 sm:min-w-48'></button>}
-              {!item.cancelled && !item.payment && <button onClick={() => appointmentRazorpay(item._id)} className='py-2 text-sm text-center transition-all duration-300 border rounded text-stone-500 sm:min-w-48 hover:bg-primary hover:text-white'>Pay Online</button>}
-              {!item.cancelled && <button onClick={() => cancelAppointment(item._id)} className='py-2 text-sm text-center transition-all duration-300 border rounded text-stone-500 sm:min-w-48 hover:bg-red-600 hover:text-white'>Cancel Appointment</button>}
-              {item.cancelled && <button className='py-2 text-red-500 border border-red-500 rounded sm:min-w-48'>Appointment Cancelled</button>}
+              {!item.cancelled && item.payment && !item.isCompleted && <button className='py-2 bg-indigo-500 border rounded text-stone-500 sm:min-w-48'></button>}
+              {!item.cancelled && !item.payment && !item.isCompleted && <button onClick={() => appointmentRazorpay(item._id)} className='py-2 text-sm text-center transition-all duration-300 border rounded text-stone-500 sm:min-w-48 hover:bg-primary hover:text-white'>Pay Online</button>}
+              {!item.cancelled && !item.isCompleted && <button onClick={() => cancelAppointment(item._id)} className='py-2 text-sm text-center transition-all duration-300 border rounded text-stone-500 sm:min-w-48 hover:bg-red-600 hover:text-white'>Cancel Appointment</button>}
+              {item.cancelled && !item.isCompleted && <button className='py-2 text-red-500 border border-red-500 rounded sm:min-w-48'>Appointment Cancelled</button>}
+              {item.isCompleted && <button className='py-2 text-green-500 border border-green-500 rounded sm:min-w-48'>Completed</button>}
             </div>
           </div>
         ))}

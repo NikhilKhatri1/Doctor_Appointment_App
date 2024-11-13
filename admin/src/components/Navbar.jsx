@@ -2,9 +2,17 @@ import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
 import { AdminContext } from '../context/AdminContext'
 import { useNavigate } from 'react-router-dom'
+import { DoctorContext } from '../context/DoctorContext'
+
+
+
 const Navbar = () => {
     const { aToken, setAToken } = useContext(AdminContext)
+    const { dToken, setDToken } = useContext(DoctorContext)
+
     const navigate = useNavigate()
+
+
     const logout = () => {
         // redirect to / page
         navigate('/')
@@ -12,6 +20,8 @@ const Navbar = () => {
         aToken && setAToken('')
         // aToken is available in storage then use removeItem in local Storage
         aToken && localStorage.removeItem('aToken')
+        dToken && setDToken('')
+        dToken && localStorage.removeItem('dToken')
     }
     return (
         <div className='flex items-center justify-between px-4 py-3 bg-white border-b sm:px-10'>
