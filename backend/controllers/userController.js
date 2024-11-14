@@ -1,5 +1,5 @@
 import validator from 'validator'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import userModel from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
@@ -278,7 +278,7 @@ const verifyRazorpay = async (req, res) => {
         } else {
             res.json({ success: false, message: "Payment Failed" })
         }
-        
+
     } catch (error) {
         console.log(error)
         res.json({ success: false, message: error.message })
