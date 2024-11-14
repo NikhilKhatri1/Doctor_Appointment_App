@@ -12,7 +12,7 @@ const AdminContextProvider = (props) => {
     const [dashData, setDashData] = useState(false)
 
     // const backendUrl = import.meta.env.VITE_BACKEND_URL
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000"; // Fallback if undefined
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://doctor-appointment-app-grrd.onrender.com"; // Fallback if undefined
     // console.log(backendUrl)
     const getAllDoctors = async () => {
         try {
