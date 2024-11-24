@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import doctorModel from '../models/doctorModel.js'
 import appointmentModel from '../models/appointmentModel.js'
-import razorpay from 'razorpay'
+import razorpay from 'razorpay';
 
 // API to register user
 
@@ -235,7 +235,7 @@ const razorpayInstance = new razorpay({
 
 const paymentRazorpay = async (req, res) => {
     try {
-        const { appointmentId } = req.body
+        const { appointmentId } = req.body;
         const appointmentData = await appointmentModel.findById(appointmentId)
         // if appointment is cancelled you dont have to pay
         if (!appointmentData || appointmentData.cancelled) {
@@ -244,7 +244,7 @@ const paymentRazorpay = async (req, res) => {
 
         // creating option for razor pay
         const options = {
-            amount: appointmentData.amount * 100,
+            amount: appointmentData.amount * 10,
             currency: process.env.CURRENCY,
             receipt: appointmentId,
         }
