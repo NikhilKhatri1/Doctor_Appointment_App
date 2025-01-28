@@ -8,7 +8,7 @@ const AppContextProvider = (props) => {
 
     const currencySymbol = '$'
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const backendUrl = https://prescripto-backend-2ggt.onrender.com
     // doctor list
     const [doctors, setDoctors] = useState([]);
     // user authentication token
