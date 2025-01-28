@@ -12,7 +12,7 @@ const AdminContextProvider = (props) => {
     const [dashData, setDashData] = useState(false)
 
     // const backendUrl = import.meta.env.VITE_BACKEND_URL
-    const backendUrl ="https://prescripto-backend-2ggt.onrender.com"; // Fallback if undefined
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://prescripto-backend-2ggt.onrender.com"; // Fallback if undefined
     // console.log(backendUrl)
     const getAllDoctors = async () => {
         try {
