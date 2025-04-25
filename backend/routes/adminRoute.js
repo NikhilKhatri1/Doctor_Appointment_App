@@ -1,3 +1,4 @@
+// routes/adminRoute.js
 import express from 'express'
 import { addDoctor, adminDashboard, allDoctors, appointmentAdmin, appointmentCancel, loginAdmin } from '../controllers/adminController.js'
 import upload from '../middlewares/multer.js'

@@ -1,3 +1,5 @@
+// routes/userRoute.js
+
 import express from 'express'
 import { registerUser, loginUser, getProfile, updateProfile, bookAppointment, listAppointment, cancelAppointment, paymentRazorpay, verifyRazorpay } from '../controllers/userController.js'
 import authUser from '../middlewares/authUser.js'
